@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import UserProfile from './components/UserProfile/UserProfile'
+import Heart from './components/Heart/Heart'
+import Comments from './components/Comments/Comments'
 import './App.css';
 
 class App extends Component {
+  state = {
+    LikesNumber: 0,
+    ComentsNumber: 0,
+    Comments: [{
+      value: 'React is Awesome !!'
+    }]
+  }
+
+  handleClick = () => {
+    const likes = this.state.LikesNumber
+    this.setState({LikesNumber: likes + 1})
+  }
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="Container">
+        <UserProfile 
+          img='https://pbs.twimg.com/profile_images/836333218924277760/iVzLr4c-.jpg'
+          Name='Monoku'
+          Likes={this.state.LikesNumber}
+          Comments={this.state.ComentsNumber}
+        />
+        <Heart clickHeart={this.handleClick}/>
+        <Comments comments={this.state.Comments}/>
       </div>
     );
   }
