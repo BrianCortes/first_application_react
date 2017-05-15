@@ -7,15 +7,31 @@ import './App.css';
 class App extends Component {
   state = {
     LikesNumber: 0,
-    ComentsNumber: 0,
+    ComentsNumber: 1,
     Comments: [{
       value: 'React is Awesome !!'
     }]
   }
 
-  handleClick = () => {
+  clickHeart = () => {
     const likes = this.state.LikesNumber
     this.setState({LikesNumber: likes + 1})
+  }
+
+  addComment = (newValue) => {
+    const comments = this.state.ComentsNumber
+    const arrayComments = this.state.Comments
+    const newComment = {
+      value: newValue
+    }
+    arrayComments.push(newComment)
+    this.setState({ComentsNumber: comments + 1})
+    this.setState({Comments: arrayComments})
+    this.setState({valueText: ''})
+
+  }
+  changeText = (value) => {
+    this.setState({valueText: value})
   }
   render() {
     return (
@@ -26,8 +42,13 @@ class App extends Component {
           Likes={this.state.LikesNumber}
           Comments={this.state.ComentsNumber}
         />
-        <Heart clickHeart={this.handleClick}/>
-        <Comments comments={this.state.Comments}/>
+        <Heart clickHeart={this.clickHeart}/>
+        <Comments 
+          comments={this.state.Comments}
+          addComment={this.addComment}
+          changeText={this.changeText}
+          valueText={this.state.valueText}
+          />
       </div>
     );
   }

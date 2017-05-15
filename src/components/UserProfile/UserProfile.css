@@ -10,11 +10,12 @@
 }
 
 .Img {
-	width: 230px;
-	height: 230px;
+	width: 150px;
+	height: 150px;
 	border-radius: 50%;
 	border: solid 1px midnightblue;
 	background-size: cover;
+	margin: 0 auto;
 }
 
 .InfoContainer {

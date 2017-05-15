@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Comments.css';
 
-const Comments = ({comments}) => {
+const Comments = ({comments, addComment, changeText, valueText}) => {
+	const handleChange = (event) => {
+		changeText(event.target.value)
+  }
+	const handleClick = () => {
+		addComment(valueText)
+	}
 	const CommentList = comments.map((element, index) => {
-		debugger
 		return(
 			<div className='Comments' key={index}>
 				<div className='User'></div>
@@ -13,16 +18,30 @@ const Comments = ({comments}) => {
 		)
 	})
 	return (
-		<div>
+		<div className='CommentsContainerBox'>
 			<div className='CommentsContainer'>
-				<input className='CommentsBox' type="text" placeholder='escriba un comentario'/>
-				<button className='CommentButton'> > </button>
+				<input
+					onChange={(e) => handleChange(e)}
+				 	className='CommentsBox' 
+					type="text" placeholder='escriba un comentario'
+					value={valueText}
+				/>
+				<button className='CommentButton' onClick={()=> handleClick()}> > </button>
 			</div>
 			{CommentList}
 		</div>
 	)
 }
 
+Comment.defaultProps = {
+	valueInput: ''
+}
+
+Comments.propTypes = {
+	addComment: PropTypes.func.isRequired,
+	comments: PropTypes.array.isRequired,
+	changeText: PropTypes.func.isRequired
+}
 
 
 export default Comments;
