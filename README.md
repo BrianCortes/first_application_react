@@ -1,6 +1,10 @@
-Una pequeña muestra de la utilización de React
+##Una pequeña muestra de la utilización de React 🤓
 
 In the project directory, you can run:
+
+### `npm install`
+
+Installs all necessary dependencies
 
 ### `npm start`
 
