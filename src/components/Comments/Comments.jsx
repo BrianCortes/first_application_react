@@ -22,10 +22,10 @@ const Comments = ({comments, addComment, changeText, valueText}) => {
 			<div className='CommentsContainer'>
 				<input
 					onChange={(e) => handleChange(e)}
-				 	className='CommentsBox' 
+				 	className='CommentsBox'
 					type="text" placeholder='escriba un comentario'
 					value={valueText}
-				/>
+				></input>
 				<button className='CommentButton' onClick={()=> handleClick()}> > </button>
 			</div>
 			{CommentList}
